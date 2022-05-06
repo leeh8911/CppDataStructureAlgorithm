@@ -15,6 +15,7 @@
         "xutility": "cpp",
         "stack": "cpp",
         "utility": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "unordered_map": "cpp"
     }
 }
