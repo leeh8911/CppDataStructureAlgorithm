@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "utils/utils.h"
 
@@ -9,40 +10,27 @@ class Solution {
 public:
     string removeDuplicates(string s, int k) {
         if (s.size() < k) return s;
-        auto it = s.begin();
-        auto jt = it;
+        vector<pair<int, char>> buffer;
+        buffer.emplace_back(make_pair(0, '!'));
 
-        while(it != s.end()){
-            int count = 1;
-            bool erased = false;
-            for(jt = it; jt != (s.end()-1); jt++){
-                if (*jt == *(jt+1)){
-                    count++;
+        for(auto it = s.begin(); it != s.end(); it++){
+            if(buffer.back().second == *it){
+                buffer.back().first++;
+                if (buffer.back().first == k){
+                    buffer.pop_back();
                 }
-                else{
-                    break;
-                }
-
-                if (count == k){
-                    s.erase(it, jt+2);
-                    erased=true;
-                    break;
-                }
-            }
-
-            if (!erased){
-                it = jt + 1;
             }
             else{
-                for(;it != s.begin(); it--){
-                    if(*it != *(it-1)){
-                        break;
-                    }
-                }
+                buffer.emplace_back(make_pair(1, *it));
             }
         }
 
-        return s;
+        string result = "";
+        for(const auto& p : buffer){
+            result.append(p.first, p.second);
+        }
+
+        return result;
     }
 };
 

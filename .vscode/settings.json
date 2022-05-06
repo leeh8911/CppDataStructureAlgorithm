@@ -12,6 +12,9 @@
         "list": "cpp",
         "xhash": "cpp",
         "xtree": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "stack": "cpp",
+        "utility": "cpp",
+        "queue": "cpp"
     }
 }
