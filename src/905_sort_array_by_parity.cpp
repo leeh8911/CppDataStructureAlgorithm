@@ -21,6 +21,7 @@ ostream& operator<<(ostream& os, vector<int> v){
     os << "]";
     return os;
 }
+
 bool operator==(vector<int> a, vector<int> b){
     if (a.size() == b.size()){
         for(int i = 0; i < a.size(); i++){
